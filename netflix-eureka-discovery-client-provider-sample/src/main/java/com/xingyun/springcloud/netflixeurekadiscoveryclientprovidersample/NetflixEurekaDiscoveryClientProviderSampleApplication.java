@@ -1,4 +1,4 @@
-package com.xingyun.springcloud.netflixeurekadiscoveryclientsample;
+package com.xingyun.springcloud.netflixeurekadiscoveryclientprovidersample;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,9 +11,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-public class NetflixEurekaDiscoveryClientSampleApplication {
+public class NetflixEurekaDiscoveryClientProviderSampleApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(NetflixEurekaDiscoveryClientSampleApplication.class, args);
+        SpringApplication.run(NetflixEurekaDiscoveryClientProviderSampleApplication.class, args);
     }
 }

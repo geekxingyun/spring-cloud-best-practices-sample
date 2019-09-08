@@ -1,4 +1,4 @@
-package com.xingyun.springcloud.netflixeurekaserviceregisterdiscoveryserversample;
+package com.xingyun.springcloud.netflixeurekadiscoveryclientprovidersample;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class NetflixEurekaServiceRegisterDiscoveryServerSampleApplicationTests {
+public class NetflixEurekaDiscoveryClientSampleApplicationTests {
 
     @Test
     public void contextLoads() {

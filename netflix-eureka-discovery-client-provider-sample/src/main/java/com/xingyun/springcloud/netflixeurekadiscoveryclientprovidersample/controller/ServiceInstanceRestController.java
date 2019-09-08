@@ -1,4 +1,4 @@
-package com.xingyun.springcloud.netflixeurekadiscoveryclientsample.controller;
+package com.xingyun.springcloud.netflixeurekadiscoveryclientprovidersample.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;

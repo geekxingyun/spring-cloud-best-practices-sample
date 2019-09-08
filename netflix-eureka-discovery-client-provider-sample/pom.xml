@@ -13,9 +13,9 @@
 
     <!--设置本项目的groupId artifactId 和版本信息-->
     <groupId>com.xingyun.springcloud</groupId>
-    <artifactId>netflix-eureka-discovery-client-sample</artifactId>
+    <artifactId>netflix-eureka-discovery-client-provider-sample</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>netflix-eureka-discovery-client-sample</name>
+    <name>netflix-eureka-discovery-client-provider-sample</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -67,6 +67,10 @@
             <groupId>javax.activation</groupId>
             <artifactId>activation</artifactId>
             <version>${javax.activation.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <!--spring-boot-starter-test提供单元测试功能支持-->
         <dependency>
