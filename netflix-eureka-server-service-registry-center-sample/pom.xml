@@ -13,9 +13,9 @@
 
     <!--设置本项目的groupId artifactId 和版本信息-->
     <groupId>com.xingyun.springcloud</groupId>
-    <artifactId>netflix-eureka-service-register-discovery-server-sample</artifactId>
+    <artifactId>netflix-eureka-server-service-registry-center-sample</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>netflix-eureka-service-register-discovery-server-sample</name>
+    <name>netflix-eureka-server-service-registry-center-sample</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -29,18 +29,12 @@
     </properties>
 
     <dependencies>
-        <!--通过注解方式省略Getter and Setter 以及ToString()方法,让项目看起来更清爽简洁 -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
         <!--spring-boot-starter-web提供Web模块支持-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--spring-cloud-starter-netflix-eureka-server提供服务注册和发现功能-->
+        <!--spring-cloud-starter-netflix-eureka-server提供服务注册中心功能支持-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
@@ -74,7 +68,7 @@
             <artifactId>activation</artifactId>
             <version>${javax.activation.version}</version>
         </dependency>
-
+        <!--spring-boot-starter-test提供单元测试功能支持-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
