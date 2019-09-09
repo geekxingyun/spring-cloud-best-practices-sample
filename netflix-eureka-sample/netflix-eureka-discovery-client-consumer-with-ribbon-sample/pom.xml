@@ -2,12 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <!--这里将项目的夫项目设置为Spring Boot-->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.8.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+    <!--设置本项目的groupId artifactId 和版本信息-->
     <groupId>com.xingyun.springcloud</groupId>
     <artifactId>netflix-eureka-discovery-client-consumer-with-ribbon-sample</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -17,27 +21,39 @@
     <properties>
         <java.version>12</java.version>
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
+        <javax.jaxb.version>2.3.0</javax.jaxb.version>
+        <javax.activation.version>1.1.1</javax.activation.version>
+        <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
-        </dependency>
-
+        <!--通过注解省略Getter,Setter,ToString()方法的编写,让项目看起来更清爽简洁-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        <!--spring-boot-starter-actuator提供应用监控功能-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!--spring-boot-starter-web 提供Web 模块支持-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--spring-cloud-starter-netflix-eureka-client 提供Netflix Eureka 客户端服务发现和注册功能模块支持-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <!--spring-cloud-starter-netflix-ribbon 提供Netflix Eureka 客户端服务发现和注册功能模块支持-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

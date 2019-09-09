@@ -1,3 +1,7 @@
+# Netflix Eureka 服务端 服务注册中心
+
+## 1.添加依赖
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -29,28 +33,23 @@
     </properties>
 
     <dependencies>
-        <!--通过注解省略Getter,Setter,ToString()方法的编写,让项目看起来更清爽简洁-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <!--spring-boot-starter-actuator提供应用监控功能-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <!--spring-boot-starter-web 提供Web 模块支持-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!--spring-cloud-starter-netflix-eureka-server 提供Netflix Eureka 服务端注册中心功能模块支持-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-        </dependency>
-
         <!--
       JAXB API是java EE 的API，因此在java SE 9.0 中不再包含这个 Jar 包。
       java 9 中引入了模块的概念，默认情况下，Java SE中将不再包含java EE 的Jar包
@@ -88,7 +87,6 @@
         </dependency>
     </dependencies>
 
-    <!--统一版本依赖解决多个版本依赖不统一问题-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -122,3 +120,43 @@
     </build>
 
 </project>
+```
+## 1.2 添加@EnableEurekaServer注解启动用服务端注册中心
+```java
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+
+/**
+ * @author 星云
+ * @功能 Netflix Eureka 服务端 服务注册中心
+ * @日期和时间 9/9/2019 8:04 AM
+ */
+@EnableEurekaServer
+@SpringBootApplication
+public class NetflixEurekaServerServiceRegistryCenterSampleApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(NetflixEurekaServerServiceRegistryCenterSampleApplication.class, args);
+    }
+}
+```
+## 1.3 配置application.properties
+```shell
+#定义应用程序的名称
+spring.application.name=netflix-eureka-server-service-registry-center
+# 配置内嵌容器的IP地址
+server.address=127.0.0.1
+# 配置内嵌容器的端口,服务注册中心首页地址:http://127.0.0.1:8761/
+server.port=8761
+# eureka server config
+# 默认设置下，该服务注册中心也会将自己作为客户端来尝试注册它自己，所以我们需要禁用它的客户端注册行为
+eureka.client.register-with-eureka=false
+eureka.client.fetch-registry=false
+#配置日志显示级别
+logging.level.com.netflix.eureka=OFF
+logging.level.com.netflix.discovery=OFF
+```
+## 1.4 打开注册中心首页地址
+
+[http://127.0.0.1:8761/](http://127.0.0.1:8761/)

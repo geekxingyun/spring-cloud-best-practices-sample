@@ -1,3 +1,7 @@
+# Netflix Eureka 客户端生产者
+
+## 1.1 添加pom.xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -13,15 +17,13 @@
 
     <!--设置本项目的groupId artifactId 和版本信息-->
     <groupId>com.xingyun.springcloud</groupId>
-    <artifactId>netflix-eureka-server-service-registry-center-sample</artifactId>
+    <artifactId>netflix-eureka-discovery-client-service-provider-sample</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>netflix-eureka-server-service-registry-center-sample</name>
+    <name>netflix-eureka-discovery-client-service-provider-sample</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <!--项目使用JDK版本,建议使用JDK8以上版本-->
         <java.version>12</java.version>
-        <!--项目所使用的第三方包的版本,建议以后都统一采用这种方式,方便以后升级-->
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
         <javax.jaxb.version>2.3.0</javax.jaxb.version>
         <javax.activation.version>1.1.1</javax.activation.version>
@@ -45,18 +47,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--spring-cloud-starter-netflix-eureka-server 提供Netflix Eureka 服务端注册中心功能模块支持-->
+        <!--spring-cloud-starter-netflix-eureka-client 提供Netflix Eureka 客户端服务发现和注册功能模块支持-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-
         <!--
-      JAXB API是java EE 的API，因此在java SE 9.0 中不再包含这个 Jar 包。
-      java 9 中引入了模块的概念，默认情况下，Java SE中将不再包含java EE 的Jar包
-      而在 java 6/7 / 8 时关于这个API 都是捆绑在一起的
-      JDK 9 以后需要添加如下依赖
-       -->
+     JAXB API是java EE 的API，因此在java SE 9.0 中不再包含这个 Jar 包。
+     java 9 中引入了模块的概念，默认情况下，Java SE中将不再包含java EE 的Jar包
+     而在 java 6/7 / 8 时关于这个API 都是捆绑在一起的
+     JDK 9 以后需要添加如下依赖
+      -->
         <!-- Java 6 = JAX-B Version 2.0   -->
         <!-- Java 7 = JAX-B Version 2.2.3 -->
         <!-- Java 8 = JAX-B Version 2.2.8 -->
@@ -122,3 +123,65 @@
     </build>
 
 </project>
+```
+## 1.2 添加@EnableDiscoveryClient注解
+```
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+
+/**
+ * @author 星云
+ * @功能
+ * @日期和时间 9/8/2019 6:29 PM
+ */
+@EnableDiscoveryClient
+@SpringBootApplication
+public class NetflixEurekaDiscoveryClientServiceProviderSampleApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(NetflixEurekaDiscoveryClientServiceProviderSampleApplication.class, args);
+    }
+}
+```
+## 1.3 编写一个可供调用的Service
+```
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+/**
+ * @author 星云
+ * @功能
+ * @日期和时间 9/8/2019 6:29 PM
+ */
+@Slf4j
+@RestController
+public class ProviderController {
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
+    @RequestMapping("/service-instances/{applicationName}")
+    public List<ServiceInstance> serviceInstancesByApplicationName(
+            @PathVariable String applicationName) {
+        log.info("Hi I am {},Hello World Method have been called!!!", applicationName);
+        return this.discoveryClient.getInstances(applicationName);
+    }
+}
+```
+## 1.4 配置application.properties
+```
+#定义应用程序的名称 生产者
+spring.application.name=netflix-eureka-client-service-provider
+# 配置内嵌容器的IP地址
+server.address=127.0.0.1
+# 配置内嵌容器的端口
+server.port=2001
+```
