@@ -1,5 +1,7 @@
 # SpringCloudBestPracticesSample
 
+探究学习 Spring Cloud 构建分布式应用程序的最佳实践
+
 |项目名称|项目说明|
 |--|--|
 |netflix-eureka-server-service-registry-center-sample|Netflix Eureka 服务注册中心|
