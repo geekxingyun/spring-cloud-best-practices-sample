@@ -1,5 +1,6 @@
 package com.xingyun.singlearchitecturespringbootshoppingsample.controller.api;
 
+import com.xingyun.singlearchitecturespringbootshoppingsample.constant.HttpStatusCodeConstant;
 import com.xingyun.singlearchitecturespringbootshoppingsample.model.vo.AppResponseVO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,7 @@ public class HelloController {
 
 	@GetMapping(value = "/hello.do")
 	public AppResponseVO hello(){
-		appResponseVO.setResponseCode(200);
+		appResponseVO.setResponseCode(HttpStatusCodeConstant.OK_CODE);
 		appResponseVO.setResponseMessage("Response Success");
 		appResponseVO.setResponseData("this is hello message");
 		return appResponseVO;

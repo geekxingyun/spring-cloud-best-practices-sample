@@ -1,5 +1,6 @@
 package com.xingyun.singlearchitecturespringbootshoppingsample.controller.api;
 
+import com.xingyun.singlearchitecturespringbootshoppingsample.constant.HttpStatusCodeConstant;
 import com.xingyun.singlearchitecturespringbootshoppingsample.model.dto.UserDTO;
 import com.xingyun.singlearchitecturespringbootshoppingsample.model.vo.AppResponseVO;
 import com.xingyun.singlearchitecturespringbootshoppingsample.model.vo.UserVO;
@@ -47,7 +48,7 @@ public class UserEndPoint {
 	})
 	public AppResponseVO findAll(Pageable pageable){
 		Page<UserVO> userVOPage= this.userService.getPageUser(pageable);
-		appResponseVO.setResponseCode(200);
+		appResponseVO.setResponseCode(HttpStatusCodeConstant.OK_CODE);
 		appResponseVO.setResponseMessage("获取用户分页数据成功");
 		if(null!=userVOPage){
 			List<UserVO> userVOList=userVOPage.getContent();
@@ -63,7 +64,7 @@ public class UserEndPoint {
 	@ApiImplicitParam(name = "id",value = "用户的主键",example = "1",dataType = "int",paramType = "path")
 	public AppResponseVO detail(@PathVariable Long id){
 		UserVO userVO=this.userService.loadUser(id);
-		appResponseVO.setResponseCode(200);
+		appResponseVO.setResponseCode(HttpStatusCodeConstant.OK_CODE);
 		appResponseVO.setResponseMessage("获取用户详情数据成功");
 		appResponseVO.setResponseData(userVO);
 		return appResponseVO;
@@ -78,7 +79,7 @@ public class UserEndPoint {
 	public AppResponseVO update(@PathVariable Long id,@RequestBody UserDTO userDTO){
 		userDTO.setId(id);
 		UserVO userVO=this.userService.saveUser(userDTO);
-		appResponseVO.setResponseCode(200);
+		appResponseVO.setResponseCode(HttpStatusCodeConstant.OK_CODE);
 		appResponseVO.setResponseMessage("更新用户详情数据成功");
 		appResponseVO.setResponseData(userVO);
 		return appResponseVO;
@@ -91,7 +92,7 @@ public class UserEndPoint {
 	})
 	public AppResponseVO delete(@PathVariable Long id){
 		this.userService.removedUserById(id);
-		appResponseVO.setResponseCode(200);
+		appResponseVO.setResponseCode(HttpStatusCodeConstant.OK_CODE);
 		appResponseVO.setResponseMessage("删除指定用户成功");
 		appResponseVO.setResponseData(true);
 		return appResponseVO;
