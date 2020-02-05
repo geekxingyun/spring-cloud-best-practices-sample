@@ -1,9 +1,10 @@
 package com.xingyun.singlearchitecturespringbootshoppingsample.constant;
 
 /**
- * @see [https://tool.lu/httpcode/],[https://httpstatuses.com/]
+ * @see [https://tool.lu/httpcode/]([https://tool.lu/httpcode/]),
+ *      [https://httpstatuses.com/](https://httpstatuses.com/)
  * @author qing-feng.zhao
- * @description
+ * @description Http Status Code Constant
  * @date 2020/2/5 13:40
  */
 public final class HttpStatusCodeConstant {
