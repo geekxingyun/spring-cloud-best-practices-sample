@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -13,10 +14,10 @@ import java.util.Date;
  * @description
  * @date 2020/2/1 7:53
  */
-//@Table(name = "TB_PRODUCT_COMMENT")
-@Entity
 @Data
-public class ProductComment implements Serializable {
+@Table(name = "TB_PRODUCT_COMMENT")
+@Entity
+public class ProductCommentEntity implements Serializable {
     /**
      * 商品评论数据库主键
      */

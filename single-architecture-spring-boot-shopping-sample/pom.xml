@@ -23,6 +23,7 @@
         <java.version>1.8</java.version>
         <guava.version>20.0</guava.version>
         <swagger.version>2.9.2</swagger.version>
+        <skipTests>true</skipTests>
     </properties>
 
     <dependencies>
@@ -86,11 +87,11 @@
         </dependency>
 
         <!-- added MySQL support -->
-        <!-- <dependency>
+         <dependency>
              <groupId>mysql</groupId>
              <artifactId>mysql-connector-java</artifactId>
              <scope>runtime</scope>
-         </dependency>-->
+         </dependency>
         <!--Starter for using MongoDB document-oriented database and Spring Data MongoDB-->
         <!--<dependency>
             <groupId>org.springframework.boot</groupId>
