@@ -8,7 +8,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * @description
  * @date 2020/2/1 8:45
  */
-@EnableJpaRepositories(value = "com.xingyun.singlearchitecturespringbootshoppingsample.dao.jpa")
+@EnableJpaRepositories(basePackages = {
+		"com.xingyun.singlearchitecturespringbootshoppingsample.business.user.dao.jpa",
+		"com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.dao.jpa",
+		"com.xingyun.singlearchitecturespringbootshoppingsample.business.product.dao.jpa",
+})
 @Configuration
 public class SpringDataJpaConfig {
 }

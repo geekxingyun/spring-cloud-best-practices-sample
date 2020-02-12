@@ -1,7 +1,7 @@
-package com.xingyun.singlearchitecturespringbootshoppingsample.service;
+package com.xingyun.singlearchitecturespringbootshoppingsample.business.user.service;
 
-import com.xingyun.singlearchitecturespringbootshoppingsample.model.dto.UserDTO;
-import com.xingyun.singlearchitecturespringbootshoppingsample.model.vo.UserVO;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.user.model.dto.UserDTO;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.user.model.vo.UserVO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

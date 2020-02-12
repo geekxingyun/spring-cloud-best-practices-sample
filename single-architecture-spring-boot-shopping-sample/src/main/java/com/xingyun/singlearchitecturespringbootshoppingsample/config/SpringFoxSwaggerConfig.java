@@ -2,6 +2,7 @@ package com.xingyun.singlearchitecturespringbootshoppingsample.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -37,7 +38,7 @@ public class SpringFoxSwaggerConfig {
 				.apiInfo(apiInfo)
 				.groupName("SwaggerGroupOneAPI")
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.xingyun.singlearchitecturespringbootshoppingsample.controller.api"))
+				.apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
 				.paths(PathSelectors.any())
 				.build();
 	}

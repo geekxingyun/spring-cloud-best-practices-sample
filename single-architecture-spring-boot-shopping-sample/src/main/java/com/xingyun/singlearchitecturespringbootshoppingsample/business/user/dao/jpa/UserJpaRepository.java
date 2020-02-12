@@ -1,6 +1,6 @@
-package com.xingyun.singlearchitecturespringbootshoppingsample.dao.jpa;
+package com.xingyun.singlearchitecturespringbootshoppingsample.business.user.dao.jpa;
 
-import com.xingyun.singlearchitecturespringbootshoppingsample.model.entity.UserEntity;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.user.model.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

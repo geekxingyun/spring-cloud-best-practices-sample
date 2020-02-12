@@ -92,16 +92,6 @@
              <artifactId>mysql-connector-java</artifactId>
              <scope>runtime</scope>
          </dependency>
-        <!--Starter for using MongoDB document-oriented database and Spring Data MongoDB-->
-        <!--<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>-->
-        <!--Starter for using Redis key-value data store with Spring Data Redis and the Lettuce client-->
-        <!--<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>-->
 
         <!-- Starter for using Spring Data JPA with Hibernate -->
         <dependency>
@@ -114,29 +104,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <!-- Starter for using Spring AMQP and Rabbit MQ -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
-
-        <!--Starter for using Java Mail and Spring Framework’s email sending support-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
-        </dependency>
-        <!--Starter for using the Quartz scheduler-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-quartz</artifactId>
-        </dependency>
-
-        <!-- added rabbit mq test support -->
-        <dependency>
-            <groupId>org.springframework.amqp</groupId>
-            <artifactId>spring-rabbit-test</artifactId>
-            <scope>test</scope>
         </dependency>
 
         <!-- added security test support -->
@@ -165,6 +132,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
         </plugins>
     </build>
 </project>
