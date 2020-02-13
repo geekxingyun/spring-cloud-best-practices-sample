@@ -1,6 +1,6 @@
 package com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.service;
 
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.vo.ProductCommentVO;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.vo.ProductCommentVO;
 
 import java.util.List;
 

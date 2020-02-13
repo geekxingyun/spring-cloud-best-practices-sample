@@ -1,6 +1,6 @@
 package com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.dao.jpa;
 
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.entity.ProductCommentEntity;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.entity.ProductCommentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

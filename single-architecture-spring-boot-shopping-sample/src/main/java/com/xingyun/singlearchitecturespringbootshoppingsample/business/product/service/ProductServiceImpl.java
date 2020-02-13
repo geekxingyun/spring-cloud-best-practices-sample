@@ -4,7 +4,7 @@ import com.xingyun.singlearchitecturespringbootshoppingsample.business.product.d
 import com.xingyun.singlearchitecturespringbootshoppingsample.business.product.model.entity.ProductEntity;
 import com.xingyun.singlearchitecturespringbootshoppingsample.business.product.model.vo.ProductVO;
 import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.service.ProductCommentService;
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.vo.ProductCommentVO;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.vo.ProductCommentVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

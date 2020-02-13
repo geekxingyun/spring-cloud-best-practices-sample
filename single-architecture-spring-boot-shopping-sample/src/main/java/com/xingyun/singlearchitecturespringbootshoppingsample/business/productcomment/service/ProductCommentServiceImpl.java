@@ -1,10 +1,10 @@
 package com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.service;
 
 import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.dao.jpa.ProductCommentJpaRepository;
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.entity.ProductCommentEntity;
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.vo.ProductCommentVO;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.entity.ProductCommentEntity;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.vo.ProductCommentVO;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +12,14 @@ import java.util.List;
 /**
  * @author qing-feng.zhao
  */
+@Service
 public class ProductCommentServiceImpl implements ProductCommentService{
 
-	@Autowired
-	protected ProductCommentJpaRepository productCommentJpaRepository;
+	protected final ProductCommentJpaRepository productCommentJpaRepository;
+
+	public ProductCommentServiceImpl(ProductCommentJpaRepository productCommentJpaRepository) {
+		this.productCommentJpaRepository = productCommentJpaRepository;
+	}
 
 	@Override
 	public List<ProductCommentVO> findByProductIdOrderByCreated(Long productId) {

@@ -1,4 +1,4 @@
-package com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.entity;
+package com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.entity;
 
 import lombok.Data;
 
