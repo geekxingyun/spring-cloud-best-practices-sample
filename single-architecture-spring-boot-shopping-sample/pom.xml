@@ -21,7 +21,6 @@
     <!-- Rely on version control -->
     <properties>
         <java.version>1.8</java.version>
-        <guava.version>20.0</guava.version>
         <swagger.version>2.9.2</swagger.version>
         <skipTests>true</skipTests>
     </properties>
@@ -33,12 +32,8 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-            <scope>compile</scope>
-        </dependency>
+
+        <!-- custom  application-dev.properties properties-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
@@ -49,12 +44,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-        <!-- Starter for building web, including Restful,applications using Spring MVC.
-             Uses Tomcat as the default embedded container-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <!-- JSON API documentation for spring based applications -->
@@ -98,14 +87,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-
         <!--Starter for using Spring Boot’s Actuator
          which provides production ready features to help you monitor and manage your application-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
         <!-- added security test support -->
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -132,7 +119,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
         </plugins>
     </build>
 </project>

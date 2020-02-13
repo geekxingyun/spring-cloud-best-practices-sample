@@ -69,6 +69,11 @@ public class ProductServiceImpl implements ProductService {
 		return productVO;
 	}
 
+	/**
+	 * 加载评论列表
+	 * @param productId
+	 * @return
+	 */
 	@Override
 	public List<ProductCommentVO> findAllByProductId(Long productId) {
 		return this.productCommentService.findByProductIdOrderByCreated(productId);
