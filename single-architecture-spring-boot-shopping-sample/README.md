@@ -1,5 +1,5 @@
 # Project Introduce 
-a shopping app with spring boot
+a simple shopping app with spring boot
 ## 1.1 Getting Started
 
 - 如果想学习微服务开发，建议先从开发一个单体应用的微服务应用开始。
