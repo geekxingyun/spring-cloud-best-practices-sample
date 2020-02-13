@@ -40,6 +40,13 @@
             <optional>true</optional>
         </dependency>
 
+        <!-- Starter for building web, including Restful,applications using Spring MVC.
+     Uses Tomcat as the default embedded container-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
         <!--Starter for building MVC web applications using Thymeleaf views-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
