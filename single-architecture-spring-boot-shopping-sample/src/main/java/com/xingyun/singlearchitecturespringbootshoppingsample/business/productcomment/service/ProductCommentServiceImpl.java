@@ -1,8 +1,8 @@
 package com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.service;
 
 import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.dao.jpa.ProductCommentJpaRepository;
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.entity.ProductCommentEntity;
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.vo.ProductCommentVO;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.ProductCommentEntity;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.ProductCommentVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -21,12 +21,28 @@ public class ProductCommentServiceImpl implements ProductCommentService{
 		this.productCommentJpaRepository = productCommentJpaRepository;
 	}
 
+
 	@Override
-	public List<ProductCommentVO> findByProductIdOrderByCreated(Long productId) {
+	public List<ProductCommentVO> findProductCommentByProductId(Long productId) {
+
 		List<ProductCommentVO> productCommentVOList=new ArrayList<>();
-		List<ProductCommentEntity> productCommentEntityList=productCommentJpaRepository.findByProductIdOrderByCreated(productId);
+
+		List<ProductCommentEntity> productCommentEntityList=productCommentJpaRepository.findAllByProductId(productId);
 		for (ProductCommentEntity productCommentEntity:productCommentEntityList
-			 ) {
+		) {
+			ProductCommentVO productCommentVO=new ProductCommentVO();
+			BeanUtils.copyProperties(productCommentEntity,productCommentVO);
+			productCommentVOList.add(productCommentVO);
+		}
+		return productCommentVOList;
+	}
+
+	@Override
+	public List<ProductCommentVO> findProductCommentByAuthorId(Long authorId) {
+		List<ProductCommentVO> productCommentVOList=new ArrayList<>();
+		List<ProductCommentEntity> productCommentEntityList=productCommentJpaRepository.findAllByAuthorId(authorId);
+		for (ProductCommentEntity productCommentEntity:productCommentEntityList
+		) {
 			ProductCommentVO productCommentVO=new ProductCommentVO();
 			BeanUtils.copyProperties(productCommentEntity,productCommentVO);
 			productCommentVOList.add(productCommentVO);

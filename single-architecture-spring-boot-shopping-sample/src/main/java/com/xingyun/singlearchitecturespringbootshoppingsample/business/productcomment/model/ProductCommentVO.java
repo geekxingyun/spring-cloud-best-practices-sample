@@ -1,4 +1,4 @@
-package com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.dto;
+package com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -6,14 +6,14 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author xingyun
+ * @author qing-feng.zhao
  */
 @Data
-public class ProductCommentDTO implements Serializable {
+public class ProductCommentVO implements Serializable {
 	/**
 	 * 序列化Id
 	 */
-	private static final long serialVersionUID = -3538433833974095137L;
+	private static final long serialVersionUID = 8051843147491298834L;
 	/**
 	 * 商品评论数据库主键
 	 */

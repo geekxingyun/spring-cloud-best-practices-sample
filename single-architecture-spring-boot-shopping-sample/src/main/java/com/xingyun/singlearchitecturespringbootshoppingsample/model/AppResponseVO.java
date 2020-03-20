@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 @Component
 @Data
-public class AppResponseDTO implements Serializable {
+public class AppResponseVO implements Serializable {
 	/**
 	 * 序列化Id
 	 */

@@ -1,4 +1,4 @@
-package com.xingyun.singlearchitecturespringbootshoppingsample.business.product.model.dto;
+package com.xingyun.singlearchitecturespringbootshoppingsample.business.product.model;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -7,19 +7,18 @@ import java.io.Serializable;
 
 /**
  * @author qing-feng.zhao
- *
  */
 @Data
-public class ProductDTO implements Serializable {
+public class ProductVO implements Serializable {
 	/**
 	 * 序列化Id
 	 */
-	private static final long serialVersionUID = 4952782178652885655L;
+	private static final long serialVersionUID = -4481553529553540746L;
 	/**
 	 * 商品数据库主键
 	 */
 	@ApiModelProperty(value="商品数据库主键")
-	private Long id;
+	private Long uuid;
 	/**
 	 * 商品名称
 	 */

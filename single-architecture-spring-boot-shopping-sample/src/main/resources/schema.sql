@@ -1,31 +1,61 @@
-drop table if exists TB_PRODUCT;
-drop table if exists TB_PRODUCT_COMMENT;
-drop table if exists TB_USER;
+/*
+ Navicat Premium Data Transfer
 
--- 商品表
-create table TB_PRODUCT
-(
-    ID                   int unsigned not null auto_increment comment '主键',
-    NAME                 varchar(100) comment '商品名称',
-    COVER_IMAGE          varchar(100) comment '商品封面图片',
-    PRICE                int not null default 0 comment '商品价格(分)',
-    primary key (ID)
-);
--- 商品评论表
-create table TB_PRODUCT_COMMENT
-(
-    ID                   int unsigned not null auto_increment comment '主键',
-    PRODUCT_ID           int unsigned comment '所属商品',
-    AUTHOR_ID            int unsigned comment '作者Id',
-    CONTENT              varchar(200) comment '评论内容',
-    CREATED              TIMESTAMP comment '创建时间',
-    primary key (ID)
-);
--- 用户表
-create table TB_USER
-(
-    ID                   int unsigned not null auto_increment comment '主键',
-    NIKE_NAME             varchar(50) comment '用户昵称',
-    AVATAR               varchar(255) comment '用户头像',
-    primary key (ID)
-);
+ Source Server         : localhost_mysql
+ Source Server Type    : MySQL
+ Source Server Version : 80019
+ Source Host           : localhost:3306
+ Source Schema         : spring_cloud_mysql8_test_db
+
+ Target Server Type    : MySQL
+ Target Server Version : 80019
+ File Encoding         : 65001
+
+ Date: 20/03/2020 17:33:49
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for tb_customer
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_customer`;
+CREATE TABLE `tb_customer` (
+  `pk_uuid` bigint NOT NULL,
+  `avatar` varchar(255) COLLATE utf8mb4_0900_bin DEFAULT NULL,
+  `create_time` bigint DEFAULT NULL,
+  `nike_name` varchar(255) COLLATE utf8mb4_0900_bin DEFAULT NULL,
+  `update_time` bigint DEFAULT NULL,
+  PRIMARY KEY (`pk_uuid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_bin;
+
+-- ----------------------------
+-- Table structure for tb_product
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_product`;
+CREATE TABLE `tb_product` (
+  `pk_uuid` bigint NOT NULL,
+  `cover_image` varchar(255) COLLATE utf8mb4_0900_bin DEFAULT NULL,
+  `create_time` bigint DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  `product_name` varchar(255) COLLATE utf8mb4_0900_bin DEFAULT NULL,
+  `update_time` bigint DEFAULT NULL,
+  PRIMARY KEY (`pk_uuid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_bin;
+
+-- ----------------------------
+-- Table structure for tb_product_comment
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_product_comment`;
+CREATE TABLE `tb_product_comment` (
+  `pk_uuid` bigint NOT NULL,
+  `author_id` bigint DEFAULT NULL,
+  `content` varchar(255) COLLATE utf8mb4_0900_bin DEFAULT NULL,
+  `create_time` bigint DEFAULT NULL,
+  `product_id` bigint DEFAULT NULL,
+  `update_time` bigint DEFAULT NULL,
+  PRIMARY KEY (`pk_uuid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_bin;
+
+SET FOREIGN_KEY_CHECKS = 1;

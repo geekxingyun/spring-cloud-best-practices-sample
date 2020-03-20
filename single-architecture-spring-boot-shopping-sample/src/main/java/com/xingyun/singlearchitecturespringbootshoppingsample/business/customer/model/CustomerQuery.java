@@ -1,4 +1,4 @@
-package com.xingyun.singlearchitecturespringbootshoppingsample.business.user.model.dto;
+package com.xingyun.singlearchitecturespringbootshoppingsample.business.customer.model;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @date 2020/2/5 7:50
  */
 @Data
-public class UserDTO implements Serializable {
+public class CustomerQuery implements Serializable {
 	/**
 	 * 序列化Id
 	 */

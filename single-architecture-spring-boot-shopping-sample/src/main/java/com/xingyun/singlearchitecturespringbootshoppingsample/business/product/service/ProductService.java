@@ -1,7 +1,7 @@
 package com.xingyun.singlearchitecturespringbootshoppingsample.business.product.service;
 
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.product.model.vo.ProductVO;
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.vo.ProductCommentVO;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.product.model.ProductVO;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.ProductCommentVO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

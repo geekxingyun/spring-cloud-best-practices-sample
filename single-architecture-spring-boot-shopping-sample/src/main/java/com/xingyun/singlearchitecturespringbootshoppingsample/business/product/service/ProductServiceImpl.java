@@ -1,10 +1,10 @@
 package com.xingyun.singlearchitecturespringbootshoppingsample.business.product.service;
 
 import com.xingyun.singlearchitecturespringbootshoppingsample.business.product.dao.jpa.ProductJpaRepository;
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.product.model.entity.ProductEntity;
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.product.model.vo.ProductVO;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.product.model.ProductEntity;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.product.model.ProductVO;
 import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.service.ProductCommentService;
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.vo.ProductCommentVO;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.ProductCommentVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -76,6 +76,6 @@ public class ProductServiceImpl implements ProductService {
 	 */
 	@Override
 	public List<ProductCommentVO> findAllByProductId(Long productId) {
-		return this.productCommentService.findByProductIdOrderByCreated(productId);
+		return this.productCommentService.findProductCommentByProductId(productId);
 	}
 }

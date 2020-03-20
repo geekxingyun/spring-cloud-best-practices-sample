@@ -1,6 +1,6 @@
 package com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.dao.jpa;
 
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.entity.ProductCommentEntity;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.ProductCommentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -14,5 +14,12 @@ public interface ProductCommentJpaRepository extends JpaRepository<ProductCommen
 	 * @param productId 所示产品Id
 	 * @return 返回评论列表
 	 */
-	List<ProductCommentEntity> findByProductIdOrderByCreated(Long productId);
+	List<ProductCommentEntity> findAllByProductId(Long productId);
+
+	/**
+	 * 根据发布者用户id 查找相关评论列表
+	 * @param authorId
+	 * @return
+	 */
+	List<ProductCommentEntity> findAllByAuthorId(Long authorId);
 }

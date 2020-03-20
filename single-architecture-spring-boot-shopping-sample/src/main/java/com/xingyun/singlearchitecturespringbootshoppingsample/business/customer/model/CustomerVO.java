@@ -1,4 +1,4 @@
-package com.xingyun.singlearchitecturespringbootshoppingsample.business.user.model.vo;
+package com.xingyun.singlearchitecturespringbootshoppingsample.business.customer.model;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @date 2020/2/5 7:46
  */
 @Data
-public class UserVO implements Serializable {
+public class CustomerVO implements Serializable {
 	/**
 	 * 序列化Id
 	 */

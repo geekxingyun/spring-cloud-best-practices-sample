@@ -1,9 +1,9 @@
 package com.xingyun.singlearchitecturespringbootshoppingsample.business.product.api;
 
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.product.model.vo.ProductVO;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.product.model.ProductVO;
 import com.xingyun.singlearchitecturespringbootshoppingsample.business.product.service.ProductService;
 import com.xingyun.singlearchitecturespringbootshoppingsample.constant.HttpStatusCodeConstant;
-import com.xingyun.singlearchitecturespringbootshoppingsample.model.AppResponseDTO;
+import com.xingyun.singlearchitecturespringbootshoppingsample.model.AppResponseVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -26,11 +26,11 @@ import java.util.List;
 @RestController
 public class ProductEndPoint {
 
-	private final AppResponseDTO appResponseDTO;
+	private final AppResponseVO appResponseVO;
 	private final ProductService productService;
 
-	public ProductEndPoint(AppResponseDTO appResponseDTO,ProductService productService) {
-		this.appResponseDTO = appResponseDTO;
+	public ProductEndPoint(AppResponseVO appResponseVO, ProductService productService) {
+		this.appResponseVO = appResponseVO;
 		this.productService = productService;
 	}
 
@@ -42,17 +42,17 @@ public class ProductEndPoint {
 			@ApiImplicitParam(name = "sort",value = "排序,格式为:property,property(,ASC|DESC)的方式组织",example = "ASC",dataType = "String",paramType = "query"),
 	})
 	@GetMapping(value = "/products")
-	public AppResponseDTO showProductList(Pageable pageable){
+	public AppResponseVO showProductList(Pageable pageable){
 		Page<ProductVO> productVOPageList=productService.getProductListPage(pageable);
-		appResponseDTO.setResponseCode(HttpStatusCodeConstant.OK_CODE);
-		appResponseDTO.setResponseMessage("获取产品分页数据成功");
+		appResponseVO.setResponseCode(HttpStatusCodeConstant.OK_CODE);
+		appResponseVO.setResponseMessage("获取产品分页数据成功");
 		if(null!=productVOPageList){
 			List<ProductVO> productVOList=productVOPageList.getContent();
-			appResponseDTO.setResponseData(productVOList);
+			appResponseVO.setResponseData(productVOList);
 		}else{
-			appResponseDTO.setResponseData(Collections.EMPTY_LIST);
+			appResponseVO.setResponseData(Collections.EMPTY_LIST);
 		}
-		return appResponseDTO;
+		return appResponseVO;
 	}
 
 	/**
@@ -63,19 +63,19 @@ public class ProductEndPoint {
 	@ApiOperation(value = "获取产品详情数据",notes = "获取产品详情数据",httpMethod = "GET",tags = "产品管理相关API")
 	@ApiImplicitParam(name = "productId",value = "产品表的主键",example = "1",dataType = "int",paramType = "path")
 	@GetMapping(value = "/products/{productId}")
-	public AppResponseDTO loadProduct(@PathVariable(value = "productId")Long productId){
+	public AppResponseVO loadProduct(@PathVariable(value = "productId")Long productId){
 		try {
 			ProductVO productVO = productService.loadProduct(productId);
-			appResponseDTO.setResponseCode(HttpStatusCodeConstant.OK_CODE);
-			appResponseDTO.setResponseMessage("加载指定的商品配置成功");
-			appResponseDTO.setResponseData(productVO);
+			appResponseVO.setResponseCode(HttpStatusCodeConstant.OK_CODE);
+			appResponseVO.setResponseMessage("加载指定的商品配置成功");
+			appResponseVO.setResponseData(productVO);
 		} catch (Exception e) {
 			log.error(e.getMessage(),e);
-			appResponseDTO.setResponseCode(HttpStatusCodeConstant.INTERNAL_SERVER_ERROR_CODE);
-			appResponseDTO.setResponseMessage("加载指定的商品配置出错");
-			appResponseDTO.setResponseData(null);
+			appResponseVO.setResponseCode(HttpStatusCodeConstant.INTERNAL_SERVER_ERROR_CODE);
+			appResponseVO.setResponseMessage("加载指定的商品配置出错");
+			appResponseVO.setResponseData(null);
 
 		}
-		return appResponseDTO;
+		return appResponseVO;
 	}
 }

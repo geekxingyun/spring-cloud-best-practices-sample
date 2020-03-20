@@ -1,10 +1,10 @@
-package com.xingyun.singlearchitecturespringbootshoppingsample.business.user.api;
+package com.xingyun.singlearchitecturespringbootshoppingsample.business.customer.api;
 
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.user.model.dto.UserDTO;
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.user.model.vo.UserVO;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.customer.model.CustomerQuery;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.customer.model.CustomerVO;
 import com.xingyun.singlearchitecturespringbootshoppingsample.constant.HttpStatusCodeConstant;
-import com.xingyun.singlearchitecturespringbootshoppingsample.model.AppResponseDTO;
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.user.service.UserService;
+import com.xingyun.singlearchitecturespringbootshoppingsample.model.AppResponseVO;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.customer.service.CustomerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -22,17 +22,17 @@ import java.util.List;
  * @date 2020/2/5 8:32
  */
 @RestController
-@Api(value = "UserEndPoint",tags = "用户管理相关API")
-public class UserEndPoint {
+@Api(value = "CustomerEndPoint",tags = "用户管理相关API")
+public class CustomerEndPoint {
 	/**
 	 * 构造方法注入
 	 */
-	private final UserService userService;
-	private final AppResponseDTO appResponseDTO;
+	private final CustomerService customerService;
+	private final AppResponseVO appResponseVO;
 
-	public UserEndPoint(UserService userService, AppResponseDTO appResponseDTO) {
-		this.userService = userService;
-		this.appResponseDTO = appResponseDTO;
+	public CustomerEndPoint(CustomerService customerService, AppResponseVO appResponseVO) {
+		this.customerService = customerService;
+		this.appResponseVO = appResponseVO;
 	}
 	/**
 	 *
@@ -46,28 +46,28 @@ public class UserEndPoint {
 			@ApiImplicitParam(name = "size",value = "每一页记录数的大小,默认为20",example = "20",dataType = "int",paramType = "query"),
 			@ApiImplicitParam(name = "sort",value = "排序,格式为:property,property(,ASC|DESC)的方式组织",example = "ASC",dataType = "String",paramType = "query"),
 	})
-	public AppResponseDTO findAll(Pageable pageable){
-		Page<UserVO> userVOPage= this.userService.getPageUser(pageable);
-		appResponseDTO.setResponseCode(HttpStatusCodeConstant.OK_CODE);
-		appResponseDTO.setResponseMessage("获取用户分页数据成功");
+	public AppResponseVO findAll(Pageable pageable){
+		Page<CustomerVO> userVOPage= this.customerService.getPageUser(pageable);
+		appResponseVO.setResponseCode(HttpStatusCodeConstant.OK_CODE);
+		appResponseVO.setResponseMessage("获取用户分页数据成功");
 		if(null!=userVOPage){
-			List<UserVO> userVOList=userVOPage.getContent();
-			appResponseDTO.setResponseData(userVOList);
+			List<CustomerVO> customerVOList =userVOPage.getContent();
+			appResponseVO.setResponseData(customerVOList);
 		}else{
-			appResponseDTO.setResponseData(Collections.EMPTY_LIST);
+			appResponseVO.setResponseData(Collections.EMPTY_LIST);
 		}
-		return appResponseDTO;
+		return appResponseVO;
 	}
 
 	@GetMapping(value = "/users/{id}")
 	@ApiOperation(value = "获取用户详情数据",notes = "获取用户详情数据",httpMethod = "GET",tags = "用户管理相关API")
 	@ApiImplicitParam(name = "id",value = "用户的主键",example = "1",dataType = "int",paramType = "path")
-	public AppResponseDTO detail(@PathVariable Long id){
-		UserVO userVO=this.userService.loadUser(id);
-		appResponseDTO.setResponseCode(HttpStatusCodeConstant.OK_CODE);
-		appResponseDTO.setResponseMessage("获取用户详情数据成功");
-		appResponseDTO.setResponseData(userVO);
-		return appResponseDTO;
+	public AppResponseVO detail(@PathVariable Long id){
+		CustomerVO customerVO =this.customerService.loadUser(id);
+		appResponseVO.setResponseCode(HttpStatusCodeConstant.OK_CODE);
+		appResponseVO.setResponseMessage("获取用户详情数据成功");
+		appResponseVO.setResponseData(customerVO);
+		return appResponseVO;
 	}
 
 	@PostMapping(value = "/users/{id}")
@@ -76,13 +76,13 @@ public class UserEndPoint {
 			@ApiImplicitParam(name = "id", value = "用户的主键",example = "1", dataType = "int",paramType = "path"),
 			@ApiImplicitParam(name = "userDTO", value = "用户详情数据", dataType = "UserDTO", paramType = "body"),
 	})
-	public AppResponseDTO update(@PathVariable Long id, @RequestBody UserDTO userDTO){
-		userDTO.setId(id);
-		UserVO userVO=this.userService.saveUser(userDTO);
-		appResponseDTO.setResponseCode(HttpStatusCodeConstant.OK_CODE);
-		appResponseDTO.setResponseMessage("更新用户详情数据成功");
-		appResponseDTO.setResponseData(userVO);
-		return appResponseDTO;
+	public AppResponseVO update(@PathVariable Long id, @RequestBody CustomerQuery customerQuery){
+		customerQuery.setId(id);
+		CustomerVO customerVO =this.customerService.saveUser(customerQuery);
+		appResponseVO.setResponseCode(HttpStatusCodeConstant.OK_CODE);
+		appResponseVO.setResponseMessage("更新用户详情数据成功");
+		appResponseVO.setResponseData(customerVO);
+		return appResponseVO;
 	}
 
 	@DeleteMapping(value = "/users/{id}")
@@ -90,11 +90,11 @@ public class UserEndPoint {
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "id",value = "所要删除用户的主键",example = "1",dataType = "int",paramType = "path")
 	})
-	public AppResponseDTO delete(@PathVariable Long id){
-		this.userService.removedUserById(id);
-		appResponseDTO.setResponseCode(HttpStatusCodeConstant.OK_CODE);
-		appResponseDTO.setResponseMessage("删除指定用户成功");
-		appResponseDTO.setResponseData(true);
-		return appResponseDTO;
+	public AppResponseVO delete(@PathVariable Long id){
+		this.customerService.removedUserById(id);
+		appResponseVO.setResponseCode(HttpStatusCodeConstant.OK_CODE);
+		appResponseVO.setResponseMessage("删除指定用户成功");
+		appResponseVO.setResponseData(true);
+		return appResponseVO;
 	}
 }

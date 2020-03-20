@@ -1,6 +1,6 @@
 package com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.service;
 
-import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.vo.ProductCommentVO;
+import com.xingyun.singlearchitecturespringbootshoppingsample.business.productcomment.model.ProductCommentVO;
 
 import java.util.List;
 
@@ -10,9 +10,16 @@ import java.util.List;
  */
 public interface ProductCommentService{
 	/**
-	 *
+	 * 根据产品Id 返回所有相关评论
 	 * @param productId
 	 * @return
 	 */
-	List<ProductCommentVO> findByProductIdOrderByCreated(Long productId);
+	List<ProductCommentVO> findProductCommentByProductId(Long productId);
+
+	/**
+	 * 根据发布者Id 获取评论列表
+	 * @param authorId
+	 * @return
+	 */
+	List<ProductCommentVO> findProductCommentByAuthorId(Long authorId);
 }
