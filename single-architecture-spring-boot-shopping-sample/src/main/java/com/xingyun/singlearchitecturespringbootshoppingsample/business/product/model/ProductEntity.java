@@ -5,7 +5,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * @author qing-feng.zhao
@@ -29,7 +28,6 @@ public class ProductEntity implements Serializable {
 	/**
 	 * 商品名称
 	 */
-	@Basic
 	@Column(name = "product_name")
 	private String productName;
 	/**
@@ -46,12 +44,12 @@ public class ProductEntity implements Serializable {
 	/**
 	 * 创建时间
 	 */
-	@Column(name = "price")
+	@Column(name = "create_time")
 	private Long createTime;
 
 	/**
 	 * 更新时间
 	 */
-	@Column(name = "price")
+	@Column(name = "update_time")
 	private Long updateTime;
 }
