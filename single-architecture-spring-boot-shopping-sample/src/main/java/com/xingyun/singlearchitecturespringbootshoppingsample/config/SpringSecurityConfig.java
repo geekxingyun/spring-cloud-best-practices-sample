@@ -45,7 +45,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/h2-console").hasRole("h2-db-access-role")
 				// 如果是 / 和/home 请求不进行拦截
 				.antMatchers("/", "/home", "/index", "/home.do", "/index.do").permitAll()
-				.anyRequest().permitAll()
+				.anyRequest().hasRole("app-role")
 				.and()
 				//构建一个基本的表单登录后台处理方法
 				.formLogin()
@@ -85,7 +85,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 						//密码 123456
 						.password("$2a$10$0BVXV/xzovbD1rKpC.rwnuMCysuvH0llt3y2RLJkgG.9TTZJNPwIa")
 						//角色
-						.roles("admin-role", "swagger-access-role", "h2-db-access-role")
+						.roles("app-role", "swagger-access-role", "h2-db-access-role")
 						//账户是否过期
 						.accountExpired(false)
 						//是否锁定账户

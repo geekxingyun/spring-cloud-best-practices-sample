@@ -26,9 +26,11 @@ public class AppResponseVO implements Serializable {
 	/**
 	 * 响应消息
 	 */
+	@ApiModelProperty(value="HTTP响应消息")
 	private String responseMessage;
 	/**
 	 * 响应数据
 	 */
+	@ApiModelProperty(value="HTTP业务数据")
 	private Object responseData;
 }
