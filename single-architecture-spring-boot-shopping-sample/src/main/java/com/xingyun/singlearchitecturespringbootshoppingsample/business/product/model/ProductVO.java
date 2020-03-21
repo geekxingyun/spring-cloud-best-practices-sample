@@ -3,6 +3,7 @@ package com.xingyun.singlearchitecturespringbootshoppingsample.business.product.
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.persistence.Column;
 import java.io.Serializable;
 
 /**
@@ -34,4 +35,13 @@ public class ProductVO implements Serializable {
 	 */
 	@ApiModelProperty(value="商品价格(单位:分)")
 	private Double price;
+	/**
+	 * 创建时间
+	 */
+	private Long createTime;
+
+	/**
+	 * 更新时间
+	 */
+	private Long updateTime;
 }

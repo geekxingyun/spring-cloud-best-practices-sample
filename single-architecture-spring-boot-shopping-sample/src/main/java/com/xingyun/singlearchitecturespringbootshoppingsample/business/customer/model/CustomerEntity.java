@@ -1,6 +1,5 @@
 package com.xingyun.singlearchitecturespringbootshoppingsample.business.customer.model;
 
-import com.xingyun.singlearchitecturespringbootshoppingsample.customize.SnowFlakeIdGenerator;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 

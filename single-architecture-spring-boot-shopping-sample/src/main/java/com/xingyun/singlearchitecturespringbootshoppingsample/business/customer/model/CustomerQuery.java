@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 /**
  * @author qing-feng.zhao
- * @description User 数据传输对象,Data Transfer Object,简称DTO
+ * @description Customer 查询对象
  * @date 2020/2/5 7:50
  */
 @Data
