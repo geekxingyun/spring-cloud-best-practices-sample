@@ -2,6 +2,7 @@ package com.xingyun.singlearchitecturespringbootshoppingsample.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -13,10 +14,12 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
+ * @Profile 注解表示只在dev和test环境生效,uat 环境不生效
  * @author qing-feng.zhao
  * @description
  * @date 2020/2/5 9:31
  */
+@Profile({"dev","test"})
 @EnableSwagger2
 @Configuration
 public class SpringFoxSwaggerConfig {
