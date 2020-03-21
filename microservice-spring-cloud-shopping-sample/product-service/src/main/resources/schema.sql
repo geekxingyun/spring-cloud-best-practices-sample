@@ -18,14 +18,15 @@ SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for tb_customer
+-- Table structure for tb_product
 -- ----------------------------
-DROP TABLE IF EXISTS `tb_customer`;
-CREATE TABLE `tb_customer` (
+DROP TABLE IF EXISTS `tb_product`;
+CREATE TABLE `tb_product` (
   `pk_uuid` bigint NOT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_0900_bin DEFAULT NULL,
+  `cover_image` varchar(255) COLLATE utf8mb4_0900_bin DEFAULT NULL,
   `create_time` bigint DEFAULT NULL,
-  `nike_name` varchar(255) COLLATE utf8mb4_0900_bin DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  `product_name` varchar(255) COLLATE utf8mb4_0900_bin DEFAULT NULL,
   `update_time` bigint DEFAULT NULL,
   PRIMARY KEY (`pk_uuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_bin;
