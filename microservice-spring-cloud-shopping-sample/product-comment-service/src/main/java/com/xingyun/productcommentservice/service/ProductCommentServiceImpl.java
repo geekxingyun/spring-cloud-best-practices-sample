@@ -17,6 +17,12 @@ public class ProductCommentServiceImpl implements ProductCommentService{
 
 	protected final ProductCommentJpaRepository productCommentJpaRepository;
 
+//	@Autowired
+//	private EurekaClient eurekaClient;
+//
+//	@Autowired
+//	private DiscoveryClient discoveryClient;
+
 	public ProductCommentServiceImpl(ProductCommentJpaRepository productCommentJpaRepository) {
 		this.productCommentJpaRepository = productCommentJpaRepository;
 	}
@@ -39,6 +45,12 @@ public class ProductCommentServiceImpl implements ProductCommentService{
 
 	@Override
 	public List<ProductCommentVO> findProductCommentByAuthorId(Long authorId) {
+		//try to check the authorId whether is valid from customer service
+//		eurekaClient.getNextServerFromEureka("",false);
+//
+//		List<ServiceInstance> serviceInstanceList=discoveryClient.getInstances("STORES");
+
+
 		List<ProductCommentVO> productCommentVOList=new ArrayList<>();
 		List<ProductCommentEntity> productCommentEntityList=productCommentJpaRepository.findAllByAuthorId(authorId);
 		for (ProductCommentEntity productCommentEntity:productCommentEntityList
