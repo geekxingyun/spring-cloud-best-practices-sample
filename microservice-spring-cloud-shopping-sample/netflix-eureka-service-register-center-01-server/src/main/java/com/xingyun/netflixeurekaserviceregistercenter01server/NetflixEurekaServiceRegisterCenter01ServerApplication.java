@@ -1,4 +1,4 @@
-package com.xingyun.netflixeurekaserviceregistercenter;
+package com.xingyun.netflixeurekaserviceregistercenter01server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,8 +14,10 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
  */
 @EnableEurekaServer
 @SpringBootApplication
-public class NetflixEurekaServiceRegisterCenterApplication {
+public class NetflixEurekaServiceRegisterCenter01ServerApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(NetflixEurekaServiceRegisterCenterApplication.class, args);
+        SpringApplication.run(NetflixEurekaServiceRegisterCenter01ServerApplication.class, args);
     }
+
 }
