@@ -1,0 +1,93 @@
+spring:
+  application:
+    # config app name
+    name: netflix-eureka-service-register-center-03-server
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: true
+    discovery:
+      enabled: true
+  # spring cloud eureka server default use freemarker
+  freemarker:
+    template-loader-path: classpath:/templates/
+    prefer-file-system-access: false
+
+# config server information
+server:
+  address: 192.168.159.131
+  port: 8761
+  servlet:
+    context-path: /${spring.application.name}
+
+# config eureka
+eureka:
+  # config eureka instance
+  instance:
+#    在某些情况下，Eureka最好公布服务的IP地址而不是主机
+#    设为true表示当注册到服务注册中心时候使用IP地址而不是主机名
+    prefer-ip-address: true
+    # config http enable
+    non-secure-port-enabled: true
+    # config http port
+    non-secure-port: ${server.port}
+    # config https port enable
+    secure-port-enabled: false
+    # config https port
+    secure-port: 443
+    home-page-url-path: ${server.servlet.context-path}
+    home-page-url: http://${server.address}:${eureka.instance.non-secure-port}${eureka.instance.home-page-url-path}
+    # 只有当prefer-ip-address:false hostname属性才有效
+    #hostname: peer1
+    status-page-url-path: /
+    status-page-url: ${eureka.instance.home-page-url}${eureka.instance.status-page-url-path}
+    health-check-url-path: /actuator/health
+    health-check-url: ${eureka.instance.home-page-url}${eureka.instance.health-check-url-path}
+    #如果超过90秒还没有续期,就从列表剔除掉它,default 90
+    lease-expiration-duration-in-seconds: 90
+    # 每间隔30秒续期一次 生产环境最好使用默认值30
+    lease-renewal-interval-in-seconds: 30
+#    data-center-info: myData
+#    environment: dev
+    #instance-id:
+    #metadata-map:
+    ip-address: ${server.address}
+  client:
+    # 是否向注册中心注册自己
+    register-with-eureka: true
+    # 是否获取注册中心服务列表副本
+    fetch-registry: true
+    # Eureka 服务注册中心地址
+    service-url:
+      # default value http://localhost:8761/eureka/
+      defaultZone: http://192.168.159.129:8761/netflix-eureka-service-register-center-01-server/eureka/,http://192.168.159.130:8761/netflix-eureka-service-register-center-02-server/eureka/
+      # 第一个服务注册中心
+#      zone1: http://192.168.159.129:8761/netflix-eureka-service-register-center-01-server/eureka/
+#      zone2: http://192.168.159.130:8761/netflix-eureka-service-register-center-02-server/eureka/
+#      zone3: http://192.168.159.131:8761/netflix-eureka-service-register-center-03-server/eureka/
+      # 第二个服务注册中心
+      #zone3: http://127.0.0.1:8763/netflix-eureka-service-register-center-02-server/eureka/
+    # whether use eureka Discovery client
+    enabled: true
+    #  禁用刷新Eureka客户端的功能,避免配置文件修改引起其他微服务调用失败
+    refresh:
+      enable: true
+    healthcheck:
+      enabled: false
+    prefer-same-zone-eureka: false
+  server:
+    #自我保护模式是否开启,建议设置为true default is true
+    enable-self-preservation: true
+    # 自身不注册算法 2*(n+1)*0*85
+    # 自身注册算法 2*n*0.85 只取整数部分
+    renewal-percent-threshold: 0.85
+    # default is 0
+    wait-time-in-ms-when-sync-empty: 5
+
+# config Spring Boot Actuator
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: when_authorized

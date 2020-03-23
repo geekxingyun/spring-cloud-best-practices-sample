@@ -1,0 +1,103 @@
+# Netflix Eureka Config
+eureka:
+  instance:
+    #在某些情况下，Eureka最好公布服务的IP地址而不是主机
+    #设为true表示当注册到服务注册中心时候使用IP地址而不是主机名
+    prefer-ip-address: true
+    # config http enable
+    non-secure-port-enabled: true
+    # config http port
+    non-secure-port: ${server.port}
+    # config https port enable
+    secure-port-enabled: false
+    # config https port
+    secure-port: 443
+    home-page-url-path: ${server.servlet.context-path}
+    # home page url
+    #home-page-url: http://${eureka.instance.ip-address}:${eureka.instance.non-secure-port}${eureka.instance.home-page-url-path}
+    # 只有当prefer-ip-address:false hostname属性才有效
+    #hostname: localhost
+    # default value is /actuator/info
+    status-page-url-path: /
+    # link status page url
+    #status-page-url: ${eureka.instance.home-page-url}${eureka.instance.status-page-url-path}
+    # 如果超过90秒还没有续期,就从列表剔除掉它,default 90
+    lease-expiration-duration-in-seconds: 90
+    # 每间隔30秒续期一次 生产环境最好使用默认值30
+    lease-renewal-interval-in-seconds: 30
+    # label
+    #instance-id:
+    health-check-url-path: /actuator/health
+    # 健康检查地址
+    #health-check-url: ${eureka.instance.home-page-url}${eureka.instance.health-check-url-path}
+    #ip-address: ${server.address}
+
+  client:
+    # whether get service list from service register center
+    fetch-registry: true
+    # whether register self to service register center
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://192.168.159.129:8761/netflix-eureka-service-register-center-01-server/eureka/,http://192.168.159.130:8761/netflix-eureka-service-register-center-02-server/eureka/,http://192.168.159.131/netflix-eureka-service-register-center-03-server/eureka/
+    refresh:
+      enable: true
+    enabled: true
+    healthcheck:
+      enabled: true
+
+spring:
+  # app config
+  application:
+    name: product-service
+  # spring cloud config
+  cloud:
+    discovery:
+      enabled: true
+    loadbalancer:
+      ribbon:
+        enabled: true
+  # spring data jpa config
+  jpa:
+    # enable or disable show data view in web console
+    open-in-view: true
+    # enable print sql
+    show-sql: true
+    hibernate:
+      # create:Create the schema and destroy previous data
+      # create-drop:Create and then destroy the schema at the end of the session.
+      # update:Update the schema if necessary.
+      # none:Disable DDL handling
+      ddl-auto: none
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    database: mysql
+  # spring datasource config
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring_cloud_mysql8_test_db?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: toor
+    initialization-mode: always
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    schema: schema.sql
+    data: data.sql
+
+# logback config
+logging:
+  level:
+    root: INFO
+
+# spring boot actuator config
+management:
+  endpoint:
+    health:
+      show-details: when_authorized
+    shutdown:
+      enabled: false
+
+# tomcat server config
+server:
+  port: 2103
+  servlet:
+    context-path: /${spring.application.name}
+  #address: 127.0.0.1

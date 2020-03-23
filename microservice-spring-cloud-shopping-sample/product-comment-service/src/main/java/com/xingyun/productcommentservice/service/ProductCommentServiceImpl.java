@@ -1,14 +1,9 @@
 package com.xingyun.productcommentservice.service;
 
-import com.netflix.discovery.EurekaClient;
 import com.xingyun.productcommentservice.dao.jpa.ProductCommentJpaRepository;
 import com.xingyun.productcommentservice.model.ProductCommentEntity;
 import com.xingyun.productcommentservice.model.ProductCommentVO;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,12 +17,12 @@ public class ProductCommentServiceImpl implements ProductCommentService{
 
 	protected final ProductCommentJpaRepository productCommentJpaRepository;
 
-	@Qualifier("eurekaClient")
-	@Autowired
-	private EurekaClient eurekaClient;
-
-	@Autowired
-	private DiscoveryClient discoveryClient;
+//	@Qualifier("eurekaClient")
+//	@Autowired
+//	private EurekaClient eurekaClient;
+//
+////	@Autowired
+//	private DiscoveryClient discoveryClient;
 
 	public ProductCommentServiceImpl(ProductCommentJpaRepository productCommentJpaRepository) {
 		this.productCommentJpaRepository = productCommentJpaRepository;
@@ -52,9 +47,9 @@ public class ProductCommentServiceImpl implements ProductCommentService{
 	@Override
 	public List<ProductCommentVO> findProductCommentByAuthorId(Long authorId) {
 		//try to check the authorId whether is valid from customer service
-		eurekaClient.getNextServerFromEureka("",false);
-//
-		List<ServiceInstance> serviceInstanceList=discoveryClient.getInstances("STORES");
+//		eurekaClient.getNextServerFromEureka("",false);
+////
+//		List<ServiceInstance> serviceInstanceList=discoveryClient.getInstances("STORES");
 
 
 		List<ProductCommentVO> productCommentVOList=new ArrayList<>();

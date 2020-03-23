@@ -2,6 +2,7 @@ package com.xingyun.customerservice.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.springframework.cloud.commons.util.InetUtils;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -9,7 +10,6 @@ import javax.crypto.spec.SecretKeySpec;
 
 @Slf4j
 public class AesUtils {
-
     /**
      * 可配置到Constant中，并读取配置文件注入,16位,自己定义
      */

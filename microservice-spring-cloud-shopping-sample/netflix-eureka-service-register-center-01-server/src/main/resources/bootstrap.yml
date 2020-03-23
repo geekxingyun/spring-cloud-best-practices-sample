@@ -1,0 +1,4 @@
+spring:
+  profiles:
+    #config active which one profile
+    active: test

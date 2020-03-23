@@ -13,7 +13,6 @@
 
  Date: 20/03/2020 17:33:49
 */
-
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -22,12 +21,12 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_customer`;
 CREATE TABLE `tb_customer` (
-  `pk_uuid` bigint NOT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_0900_bin DEFAULT NULL,
-  `create_time` bigint DEFAULT NULL,
-  `nike_name` varchar(255) COLLATE utf8mb4_0900_bin DEFAULT NULL,
-  `update_time` bigint DEFAULT NULL,
-  PRIMARY KEY (`pk_uuid`)
+                               `pk_uuid` bigint NOT NULL,
+                               `avatar` varchar(255) COLLATE utf8mb4_0900_bin DEFAULT NULL,
+                               `create_time` bigint DEFAULT NULL,
+                               `nike_name` varchar(255) COLLATE utf8mb4_0900_bin DEFAULT NULL,
+                               `update_time` bigint DEFAULT NULL,
+                               PRIMARY KEY (`pk_uuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_bin;
 
 SET FOREIGN_KEY_CHECKS = 1;
