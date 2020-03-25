@@ -1,3 +1,4 @@
 spring:
   profiles:
-    active: test  #config active which one profile
+    #config active which one profile
+    active: test

@@ -15,7 +15,7 @@ spring:
 
 # config server information
 server:
-  address: 192.168.159.131
+  address: 192.168.159.148
   port: 8761
   servlet:
     context-path: /${spring.application.name}
@@ -60,7 +60,7 @@ eureka:
     # Eureka 服务注册中心地址
     service-url:
       # default value http://localhost:8761/eureka/
-      defaultZone: http://192.168.159.129:8761/netflix-eureka-service-register-center-01-server/eureka/,http://192.168.159.130:8761/netflix-eureka-service-register-center-02-server/eureka/
+      defaultZone: http://192.168.159.146:8761/netflix-eureka-service-register-center-01-server/eureka/,http://192.168.159.147:8761/netflix-eureka-service-register-center-02-server/eureka/
       # 第一个服务注册中心
 #      zone1: http://192.168.159.129:8761/netflix-eureka-service-register-center-01-server/eureka/
 #      zone2: http://192.168.159.130:8761/netflix-eureka-service-register-center-02-server/eureka/

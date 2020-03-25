@@ -39,7 +39,7 @@ eureka:
     register-with-eureka: true
     service-url:
       #defaultZone: http://127.0.0.1:8761/netflix-eureka-service-register-center-01-server/eureka/,http://127.0.0.1:8762/netflix-eureka-service-register-center-02-server/eureka/,http://127.0.0.1:8763/netflix-eureka-service-register-center-03-server/eureka/
-      defaultZone: http://192.168.159.129:8761/netflix-eureka-service-register-center-01-server/eureka/,http://192.168.159.130:8761/netflix-eureka-service-register-center-02-server/eureka/,http://192.168.159.131:8761/netflix-eureka-service-register-center-03-server/eureka/
+      defaultZone: http://192.168.159.146:8761/netflix-eureka-service-register-center-01-server/eureka/,http://192.168.159.147:8761/netflix-eureka-service-register-center-02-server/eureka/,http://192.168.159.148:8761/netflix-eureka-service-register-center-03-server/eureka/
     refresh:
       enable: true
     enabled: true

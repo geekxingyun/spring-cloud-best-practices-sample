@@ -15,7 +15,7 @@ spring:
 
 # config server information
 server:
-  address: 192.168.159.129
+  address: 192.168.159.146
   port: 8761
   servlet:
     context-path: /${spring.application.name}
@@ -45,7 +45,7 @@ eureka:
     health-check-url: ${eureka.instance.home-page-url}${eureka.instance.health-check-url-path}
     #如果超过90秒还没有续期,就从列表剔除掉它,default 90
     lease-expiration-duration-in-seconds: 90
-    # 每间隔30秒续期一次 生产环境最好使用默认值30
+    # 每间隔30秒续期一次 生产环境最好使用默认值 30
     lease-renewal-interval-in-seconds: 30
 #    data-center-info: myData
 #    environment: dev
@@ -61,7 +61,7 @@ eureka:
     # Eureka 服务注册中心地址
     service-url:
       # default value http://localhost:8761/eureka/
-      defaultZone: http://192.168.159.130:8761/netflix-eureka-service-register-center-02-server/eureka/,http://192.168.159.131:8761/netflix-eureka-service-register-center-03-server/eureka/
+      defaultZone: http://192.168.159.147:8761/netflix-eureka-service-register-center-02-server/eureka/,http://192.168.159.148:8761/netflix-eureka-service-register-center-03-server/eureka/
       # 第一个服务注册中心
 #      zone1: http://192.168.159.129:8761/netflix-eureka-service-register-center-01-server/eureka/
 #      zone2: http://192.168.159.130:8761/netflix-eureka-service-register-center-02-server/eureka/

@@ -13,7 +13,6 @@
 
     <!-- netflix eureka service register center project information -->
     <!-- we won't set the group id,due to we will use the parent group id-->
-    <groupId>com.xingyun</groupId>
     <artifactId>netflix-eureka-service-register-center-01-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <!--default value is jar,but we had better set it-->
