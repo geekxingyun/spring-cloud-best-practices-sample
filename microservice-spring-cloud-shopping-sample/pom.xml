@@ -18,13 +18,10 @@
     <name>microservice-spring-cloud-shopping-sample</name>
     <description>microservice spring cloud shopping project for Spring Boot</description>
 
-
     <properties>
         <!-- 通用属性配置 -->
         <java.version>1.8</java.version>
         <!-- 设置maven编译插件版本,可通过下面网址查看最新的版本-->
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
-        <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
         <guava.version>23.0</guava.version>
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
     </properties>
@@ -77,16 +74,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <!--该插件限定Maven打包时所使用的版本,避免出现版本不匹配问题-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.plugin.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
             </plugin>
         </plugins>
     </build>
