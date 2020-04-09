@@ -8,20 +8,69 @@ spring:
   freemarker:
     template-loader-path: classpath:/templates/
     prefer-file-system-access: false
-
+  cloud:
+    circuit:
+      breaker:
+        # 默认断路器功能是开启的 默认值是true
+        enabled:true
 # api gateway server port
 server:
   port: 8280
   servlet:
-    context-path: /
+    context-path: /netflix-zuul-api-gateway
 
 ribbon:
   eureka:
+    # 是否启用Ribbon 和Eureka 集成
+    enabled: true
+  # 默认zuul 的HTTP 客户端使用Apache Http
+  restclient:
+    # zuul 的HTTP 客户端使用RestClient
+    enabled: false
+  okhttp:
+    # zuul 的HTTP 客户端使用okHttpClient
     enabled: false
 
 zuul:
   routes:
     # the name is service name
     book-service:
+      # 默认路由规则是 http://zuul路由服务器地址/serviceId/具体的服务端点
+      # 直接通过静态URL路径的方式对微服务路由进行映射
       url: http://127.0.0.1:2104/book-service/
+      # 自定义微服务访问路径
+      # url: http://127.0.0.1:2104/book-service/**
+#      url: http://127.0.0.1:2104/
+#      path: /book-service
+#      ribbon:
+#        listOfServices: http://127.0.0.1:2104,http://127.0.0.1:2105,http://127.0.0.1:2106
+  # 忽略指定的微服务 如果想忽略所有的都使用自定义的设置为*
+  #ignored-services: book-service
+  # 针对所有微服务添加前缀
+#  prefix: /api
+  # 如果需要转发时带上 /api 前缀 则设置为false
+#  strip-prefix: true
+#  ribbon:
+#    eager-load:
+#      # 如果想禁用Ribbon 和Eureka 的自动集成功能设置为false
+#      enabled: true
 
+
+eureka:
+  client:
+    # whether get service list from service register center
+    fetch-registry: true
+    # whether register self to service register center
+    register-with-eureka: true
+    service-url:
+      # 配置Eureka 服务注册中心
+      default-zone: http://127.0.0.1:8761/netflix-eureka-service-register-center-server/eureka/
+
+
+# spring boot actuator config
+management:
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
