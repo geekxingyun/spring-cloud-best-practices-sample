@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: spring-cloud-netflix-zuul-api-gateway
+  thymeleaf:
+    suffix: .html
+    prefix: classpath:/templates/
+  # spring cloud eureka server default use freemarker
+  freemarker:
+    template-loader-path: classpath:/templates/
+    prefer-file-system-access: false
+
+# api gateway server port
+server:
+  port: 8280
+  servlet:
+    context-path: /
+
+ribbon:
+  eureka:
+    enabled: true
+
+zuul:
+  routes:
+    # the name is service name
+    book-service:
+      url: http://127.0.0.1:2104/book-service/
