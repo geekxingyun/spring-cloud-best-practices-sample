@@ -17,10 +17,11 @@ server:
 
 ribbon:
   eureka:
-    enabled: true
+    enabled: false
 
 zuul:
   routes:
     # the name is service name
     book-service:
       url: http://127.0.0.1:2104/book-service/
+
