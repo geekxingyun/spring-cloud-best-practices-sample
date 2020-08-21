@@ -74,7 +74,7 @@ spring:
     database: mysql
   # spring datasource config
   datasource:
-    url: jdbc:mysql://localhost:3306/spring_cloud_mysql8_test_db?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/spring_cloud_mysql8_test_db?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: toor
     initialization-mode: never
