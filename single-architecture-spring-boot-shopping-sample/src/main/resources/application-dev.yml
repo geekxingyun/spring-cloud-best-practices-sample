@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: single-architecture-spring-boot-shopping-sample
+  jpa:
+    # enable or disable show data view in web console
+    open-in-view: true
+    # enable print sql
+    show-sql: true
+    hibernate:
+      # create:Create the schema and destroy previous data
+      # create-drop:Create and then destroy the schema at the end of the session.
+      # update:Update the schema if necessary.
+      # none:Disable DDL handling
+      ddl-auto: create
+      naming:
+        # org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy:nickName mapping to NIKE_NAME
+        # org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+        # org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl extends ImplicitNamingStrategyJpaCompliantImpl
+        # org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl extends ImplicitNamingStrategyJpaCompliantImpl
+        # org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl extends ImplicitNamingStrategyJpaCompliantImpl
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+    database: h2
+  datasource:
+    username: sa
+    password: sa
+    # url:jdbc:h2:~/embedded_file_test_db
+    url: jdbc:h2:mem:in_memory_shopping_db;DB_CLOSE_DELAY=-1
+    initialization-mode: never
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+logging:
+  level:
+    root: INFO
+    sql: DEBUG
+    web: INFO
+    org:
+      springframework: INFO
+    com:
+      xingyun:
+        singlearchitecturespringbootshoppingsample: DEBUG
+
+
+management:
+  endpoint:
+    health:
+      show-details: when_authorized
