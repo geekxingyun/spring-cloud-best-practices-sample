@@ -8,11 +8,11 @@ a simple shopping app with spring boot
 
 ## 1.2 Init Data
 
-application-dev.properties 使用H2数据库,使用JPA 初始化表结构
+application-dev.yml 使用H2数据库,使用JPA 初始化表结构
 
-application-test.properties 使用 MySQL 8.x 数据库,使用JPA 初始化表结构
+application-test.yml 使用 Mysql 8.x 数据库，使用数据库脚本初始化表结构
 
-application-uat.properties 使用 Mysql 8.x 数据库，使用数据库脚本初始化表结构
+application-uat.yml 使用 MySQL 8.x 数据库,使用JPA 初始化表结构
 
 代码讲解见 [02. 微服务架构开发实战之单体架构应用改造升级微服务架构](https://xingyun.blog.csdn.net/article/details/104121520)
 
